@@ -1,8 +1,8 @@
 #!/usr/bin/env bash                                
 # sets up web servers for the deployment of web_static
 
-#apt-get update                                    
-#apt-get -y install nginx                          
+apt-get update                                    
+apt-get -y install nginx                          
 
 testConf=~/bre_conf
 defConf=/etc/nginx/sites-available/default
