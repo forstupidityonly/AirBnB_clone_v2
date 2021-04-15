@@ -24,8 +24,11 @@ def do_deploy(archive_path):
 
     try:
         put(archive_path, '/tmp/')
+        print("put worked")
         run("mkdir -p {}/".format(newFile))
+        print("mkdir worked")
         run("tar -xzf {} -C {}/".format(tmpFile, newFile))
+        print("tar worked")
         run("rm {}".format(tmpFile))
         run("mv {}/web_static/ {}".format(newFile, newFile))
         run("rm -rf {}/web_static".format(newFile))
