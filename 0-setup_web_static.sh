@@ -6,7 +6,7 @@ apt-get -y install nginx
 
 testConf=~/bre_conf
 defConf=/etc/nginx/sites-available/default
-fakeHtml=/data/web_static/releases/test/index.html
+
 
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 echo "Holberton School" | sudo tee /var/www/html/index.html
@@ -14,12 +14,12 @@ echo "Holberton School" | sudo tee /var/www/html/index.html
 #-p no error if existing, make parent directories as needed
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
-fakeHtml=/data/web_static/releases/test/index.html
-echo "meow" > $fakeHtml
+
+echo "meow" > /data/web_static/releases/test/index.html
 
 #-f force removes existing destination file
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
-sudo chown -R ubuntu /data/
+sudo chown -R ubuntu:ubuntu /data/
 
 echo "server {
               add_header X-Served-By $HOSTNAME;
@@ -45,7 +45,7 @@ echo "server {
               #    root /var/www/html;
               #    internal;
               #}
-	  }" | tee "$testConf";
+	  }" | sudo tee "$testConf";
 
 sudo cp "$testConf" "$defConf"
 sudo service nginx restart;
