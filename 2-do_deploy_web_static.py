@@ -24,13 +24,13 @@ def do_deploy(archive_path):
 
     try:
         put(archive_path, '/tmp/')
-        sudo("mkdir -p {}/".format(newFile))
-        sudo("tar -xzf {} -C {}/".format(tmpFile, newFile))
-        sudo("rm {}".format(tmpFile))
-        sudo("mv {}/web_static/ {}".format(newFile, newFile))
-        sudo("rm -rf {}/web_static".format(newFile))
-        sudo("rm -rf {}".format(cur))
-        sudo("ln -s {} {}".format(newFile, cur))
+        run("mkdir -p {}/".format(newFile))
+        run("tar -xzf {} -C {}/".format(tmpFile, newFile))
+        run("rm {}".format(tmpFile))
+        run("mv {}/web_static/ {}".format(newFile, newFile))
+        run("rm -rf {}/web_static".format(newFile))
+        run("rm -rf {}".format(cur))
+        run("ln -s {} {}".format(newFile, cur))
         return(True)
     except:
         return(False)
