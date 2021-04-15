@@ -15,8 +15,7 @@ env.hosts = ['34.75.36.193', '3.94.194.152']
 
 def deploy():
     '''Method that creates and distributes an archive to servers'''
-    try:
-        newArc = do_pack()
-        return(do_deploy(newArc))
-    except:
+    newArc = do_pack()
+    if newArc is None:
         return(False)
+    return(do_deploy(newArc))
