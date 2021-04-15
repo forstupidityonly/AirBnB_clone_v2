@@ -27,7 +27,7 @@ def do_deploy(archive_path):
         sudo("mkdir -p {}/".format(newFile))
         sudo("tar -xzf {} -C {}/".format(tmpFile, newFile))
         sudo("rm {}".format(tmpFile))
-        sudo("mv {}/web_static/* {}".format(newFile, newFile))
+        sudo("mv {}/web_static/ {}".format(newFile, newFile))
         sudo("rm -rf {}/web_static".format(newFile))
         sudo("rm -rf {}".format(cur))
         sudo("ln -s {} {}".format(newFile, cur))
