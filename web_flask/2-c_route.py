@@ -25,6 +25,8 @@ def c_route(size):
     if "_" in size:
         new = size.replace("_", " ")
         return 'C {}'.format(new)
+    else:
+        return 'C {}'.format(size)
 
 
 if __name__ == "__main__":
