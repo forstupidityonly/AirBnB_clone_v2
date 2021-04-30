@@ -44,10 +44,10 @@ class DBStorage:
         from models.amenity import Amenity
 
         classes = {
-               'BaseModel': BaseModel, 'User': User, 'Place': Place,
-               'State': State, 'City': City, 'Amenity': Amenity,
-               'Review': Review
-              }
+            'BaseModel': BaseModel, 'User': User, 'Place': Place,
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review
+        }
         if cls:
             newDict = {}
             allClassObjs = self.__session.query(classes[cls]).all()
@@ -108,3 +108,7 @@ class DBStorage:
                                       expire_on_commit=False)
         Session = scoped_session(sessionFactory)
         self.__session = Session()
+
+    def close(self):
+        ''' '''
+        self.__session.remove()
