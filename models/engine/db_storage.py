@@ -11,8 +11,6 @@ from models.base_model import Base
 class DBStorage:
     """Class that represents DBStorage"""
 
-    '''** CAN WE EVEN USE SELF HERE WHEN IT WASN'T PASSED IN
-    FOR CLASS DBSTORAGE **'''
     __engine = None
     __session = None
 
@@ -50,7 +48,7 @@ class DBStorage:
         }
         if cls:
             newDict = {}
-            allClassObjs = self.__session.query(classes[cls]).all()
+            allClassObjs = self.__session.query(cls).all()
             for obj in allClassObjs:
                 key = type(obj).__name__ + "." + obj.id
                 value = obj.to_dict()
@@ -111,4 +109,4 @@ class DBStorage:
 
     def close(self):
         '''Method adding remove method to self.__session'''
-        self.__session.remove()
+        self.__session.close()
