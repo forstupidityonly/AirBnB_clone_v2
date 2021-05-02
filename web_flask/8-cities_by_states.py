@@ -18,9 +18,10 @@ def teardown(context):
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_route():
     '''Method to load all cities of a State'''
-    stateDicts = storage.all(State)
+    
+    stateList = storage.all(State)
 
-    return render_template('8-cities_by_states.html', stateDicts=stateDicts)
+    return render_template('8-cities_by_states.html', stateList=stateList)
 
 
 if __name__ == "__main__":
