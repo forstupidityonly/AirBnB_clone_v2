@@ -1,57 +1,46 @@
 #!/usr/bin/python3
-'''Module to start Flask web app'''
-from flask import Flask, render_template
+"""flask web app"""
 
+from flask import Flask, render_template
 app = Flask(__name__)
-HOST = '0.0.0.0'
-PORT = 5000
 
 
 @app.route('/', strict_slashes=False)
-def hello_hbnb():
-    '''method that returns hello world'''
+def hello_HBNB():
+    """hello_hbnb"""
     return 'Hello HBNB!'
 
 
 @app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    '''method that returns hbnb'''
-    return 'HBNB'
+def HBNB():
+    """ hbnb """
+    return "HBNB"
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def c_route(text):
-    '''method that returns C followed by parameter'''
-    if "_" in text:
-        new = text.replace("_", " ")
-        return 'C {}'.format(new)
-    else:
-        return 'C {}'.format(text)
+def c_is_fun(text):
+    """ c is fun """
+    return "C {}".format(text.replace("_", " "))
 
 
+@app.route('/python', defaults={"text": "is cool"}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-@app.route('/python', strict_slashes=False)
-def py_route(text="is cool"):
-    '''method that displays “Python”, followed by
-    the value of the text'''
-    if "_" in text:
-        new = text.replace("_", " ")
-        return 'Python {}'.format(new)
-    else:
-        return 'Python {}'.format(text)
+def python_is_cool(text):
+    """ python is cool """
+    return "Python {}".format(text.replace("_", " "))
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
-def num_route(n):
-    '''method that returns n is a number if int'''
-    return '{} is a number'.format(n)
+@app.route('/number/<int:num>', strict_slashes=False)
+def it_is_a_number(num):
+    """ its a num """
+    return "{} is a number".format(num)
 
 
-@app.route('/number_template/<int:n>', strict_slashes=False)
-def num_temp_route(n):
-    '''method that returns n in HTML template'''
-    return render_template('5-number.html', n=n)
+@app.route('/number_template/<int:num>', strict_slashes=False)
+def number_template(num):
+    """ number template """
+    return render_template("5-number.html", num=num)
 
 
-if __name__ == "__main__":
-    app.run(HOST, PORT)
+if __name__ == '__main__':
+    app.run("0.0.0.0", 5000)
